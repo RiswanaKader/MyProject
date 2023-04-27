@@ -1,0 +1,34 @@
+package com.myntra.task;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MyntraTask {
+	static WebDriver driver;
+	public static void main(String[] args) throws InterruptedException
+	{
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.myntra.com/");
+		Thread.sleep(5000);
+		
+		Actions a=new Actions(driver);
+		WebElement kids = driver.findElement(By.xpath("(//a[text()='Kids'])[1]"));
+		Thread.sleep(5000);
+		
+		driver.navigate().to("https://www.myntra.com/kids?f=Categories%3ATshirts%3A%3AGender%3Aboys%2Cboys%20girls&plaEnabled=false");
+		List<WebElement> count = driver.findElements(By.xpath("//li[@class='product-base']"));
+		System.out.println(count.size());
+		Thread.sleep(5000);
+		driver.close();
+		
+	}
+}

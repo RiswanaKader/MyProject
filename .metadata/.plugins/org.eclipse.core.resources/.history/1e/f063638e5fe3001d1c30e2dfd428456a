@@ -1,0 +1,62 @@
+package com.myntra.task;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MyntraTask {
+	static WebDriver driver;
+	private static void browserLaunch()
+	{
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.myntra.com/kids?f=Categories%3ATshirts%3A%3AGender%3Aboys%2Cboys%20girls&plaEnabled=false");
+		System.out.println("Launched");
+		
+	}
+	private static void productsCount()
+	{
+		List<WebElement> count = driver.findElements(By.xpath("//li[@class='product-base']"));
+		System.out.println(count.size());
+		for(WebElement total:count)
+		{
+     	System.out.println(total.getText());
+		}
+		
+	}
+	private static void maximumPrice()
+	{
+		List<WebElement> allPrice = driver.findElements(By.xpath("//li[@class='product-base']//ancestor::ul[@class='results-base']//descendant::div[@class='product-price']"));
+		System.out.println(allPrice);
+		List<Integer> allShirts=new ArrayList<Integer>();
+	    for(int i=0;i<allPrice.size();i++)
+	    {
+	    	String priceText=allPrice.get(i).getText().replaceAll("Rs. ","");
+	    	int priceValue = Integer.parseInt(priceText);
+	    	allShirts.add(priceValue);
+	    }
+	    	
+	    	Integer max = Collections.max(allShirts);
+	    	System.out.println("Maximum priced shirt"+max);
+	    	}
+	
+	    
+	
+	public static void main(String[] args) 
+	{
+		browserLaunch();
+	    productsCount();
+		maximumPrice();
+		
+	}
+
+}

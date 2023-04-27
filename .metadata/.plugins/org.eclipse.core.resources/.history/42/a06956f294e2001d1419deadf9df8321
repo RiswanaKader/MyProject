@@ -1,0 +1,151 @@
+package com.NykaaSell;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+import org.junit.jupiter.api.Test;
+
+import com.Nykaa.pom.PageObjectManager;
+
+public class TestRun extends BaseClass{
+	PageObjectManager pom=new PageObjectManager(driver);
+	Scanner s=new Scanner(System.in);
+	@Test
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void launch()
+	{
+		launchUrl("https://www.nykaa.com/");
+	}
+	public void login()
+	{
+		clickOnElement(pom.getHp().getSign());
+		
+		clickOnElement(pom.getHp().getNum());
+		
+		implicitWait();
+		
+		input(pom.getHp().getSend(),"6383376698");
+		
+	    clickOnElement(pom.getHp().getProceed());
+	
+		String n=s.next();
+		
+		input(pom.getHp().getOtp(),n);
+		clickOnElement(pom.getHp().getVerify());
+		
+	}
+	public void search()
+	{
+		mouseHover(pom.getHp().getMom());
+		
+		implicitWait();
+		
+		clickOnElement(pom.getHp().getBaby());
+		
+		implicitWait();
+	}
+	public void select()
+	{
+		switchToWindow();
+		
+		javaScript(0,500);
+		
+		implicitWait();
+		
+		clickOnElement(pom.getFt().getHima());	
+	}
+	public void addtoCart()
+	{
+		switchToWindow();
+		
+		selectFromDropdown(pom.getNt().getOpt(), "index", "3");
+		
+		clickOnElement(pom.getNt().getAdd());
+		
+	}
+	public void editCart()
+	{
+		clickOnElement(pom.getNt().getCart());
+		frameUsingElement(pom.getNt().getFrame());
+		
+		implicitWait();
+		
+		clickOnElement(pom.getNt().getQt());
+		
+		implicitWait();
+		
+		clickOnElement(pom.getNt().getCount());
+		
+		implicitWait();
+		
+		clickOnElement(pom.getNt().getProcee());
+		
+		implicitWait();
+	}
+	public void payment() throws IOException
+	{
+		clickOnElement(pom.getNt().getDeliver());
+		
+		explicitWait(pom.getNt().getCre());
+		
+		String cre=s.next();
+		
+		input(pom.getNt().getCre(),cre);
+		
+		explicitWait(pom.getNt().getEx());
+		
+		String ex=s.next();
+		
+		input(pom.getNt().getEx(),ex);
+		
+		explicitWait(pom.getNt().getCvv());
+		
+		String cvv=s.next();
+		
+		input(pom.getNt().getCvv(),cvv);
+		
+		clickOnElement(pom.getNt().getPay());
+		
+		clickOnElement(pom.getNt().getSecure());
+		
+		explicitWait(pom.getNt().getPaynow());
+		
+		clickOnElement(pom.getNt().getPaynow());
+		
+		screenShot("nykaa");
+		
+		clickOnElement(pom.getNt().getClose());
+	}
+	public void removeCart()
+	{
+		clickOnElement(pom.getNt().getClick1());
+		
+		clickOnElement(pom.getNt().getEdit());
+		
+		clickOnElement(pom.getNt().getDel());
+		
+		clickOnElement(pom.getNt().getRemove());
+	}
+	
+	
+}
+

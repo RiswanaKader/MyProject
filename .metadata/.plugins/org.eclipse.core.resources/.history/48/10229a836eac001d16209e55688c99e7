@@ -1,0 +1,36 @@
+package com.javaconcepts;
+
+public class LoopingStatement {
+ public void sub() {
+	 for(int g=100;g<=105;g++)
+	 {
+		 System.out.println(g);
+	 } 
+ }
+ public void sub1()
+ {
+	 int f=5;
+	 while(f<=10) {
+		 System.out.println("Java");
+		 f++;
+	 }
+	 System.out.println();
+ }
+public void sub2(){
+	short t=5;
+	do {
+		System.out.print("Hello ");
+		t--;
+		}
+	while(t<5);
+}
+
+ public static void main(String[] args)
+ {
+	LoopingStatement loop=new LoopingStatement();
+	loop.sub2();
+	loop.sub();
+	loop.sub1();
+	
+ }
+}
